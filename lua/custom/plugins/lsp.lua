@@ -30,7 +30,8 @@ return {
       svelte = true,
       templ = true,
       cssls = true,
-
+      html = true,
+      htmx = true,
       tsserver = true,
 
       jsonls = {
@@ -106,6 +107,8 @@ return {
         python = { "isort", "black" },
         typescript = { { "prettierd", "prettier" } },
         typescriptreact = { { "prettierd", "prettier" } },
+        html = { { "prettierd", "prettier" } },
+        htmx = { { "prettierd", "prettier" } },
       },
       format_on_save = {
         timeout_ms = 500,
@@ -119,6 +122,22 @@ return {
           gofumpt = true,
         },
       },
+    })
+
+    local htmlcapabilities = vim.lsp.protocol.make_client_capabilities()
+    htmlcapabilities.textDocument.completion.completionItem.snippetSupport = true
+
+    lspconfig.html.setup({
+      capabilities = htmlcapabilities,
+      init_options = {
+        configurationSection = { "html", "css", "javascript" },
+        embeddedLanguages = {
+          css = true,
+          javascript = true,
+        },
+        provideFormatter = true,
+      },
+      cms = { "vscode-html-language-server", "--stdio" },
     })
   end,
 }
