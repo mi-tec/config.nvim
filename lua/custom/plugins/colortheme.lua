@@ -5,10 +5,11 @@ return {
   config = function()
     require("tokyonight").setup({
       styles = {
-	comments = { italic = true },
-	keywords = { italic = true },
+        comments = { italic = true },
+        keywords = { italic = true },
       },
+      transparent = true,
     })
-    vim.cmd.colorscheme 'tokyonight-night'
+    vim.cmd.colorscheme("tokyonight-night")
   end,
 }

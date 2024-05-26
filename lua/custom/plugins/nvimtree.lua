@@ -86,5 +86,6 @@ return {
   config = function()
     require("nvim-tree").setup(options)
     vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeOpen<CR>", { desc = "Nvimtree Open window" })
+    vim.keymap.set("n", "<leader>ce", "<cmd>NvimTreeCollapse<CR>", { desc = "Nvimtree Collapse" })
   end,
 }
