@@ -32,9 +32,9 @@ return {
       cssls = true,
       html = true,
       htmx = true,
-      tsserver = true,
+      ts_ls = true,
       tailwindcss = true,
-
+      pug = true,
       jsonls = {
         settings = {
           json = {
@@ -106,14 +106,15 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "isort", "black" },
-        typescript = { { "prettierd", "prettier" } },
-        typescriptreact = { { "prettierd", "prettier" } },
-        html = { { "prettierd", "prettier" } },
+        typescript = { { "prettierd", "prettier" }, stop_after_first = true },
+        typescriptreact = { { "prettierd", "prettier" }, stop_after_first = true },
+        html = { { "prettierd", "prettier" }, stop_after_first = true },
         htmx = { { "prettierd", "prettier" } },
       },
       format_on_save = {
         timeout_ms = 500,
         lsp_fallback = true,
+        stop_after_first = true,
       },
     })
 
@@ -124,6 +125,8 @@ return {
         },
       },
     })
+
+    lspconfig.pug.setup({})
 
     local htmlcapabilities = vim.lsp.protocol.make_client_capabilities()
     htmlcapabilities.textDocument.completion.completionItem.snippetSupport = true
